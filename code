@@ -1,0 +1,79 @@
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp4
+{
+
+    class Markup
+    {
+
+        string text;
+
+      public Markup() {
+            this.text = "";
+        }
+           
+
+        public Markup setStart(string s )
+        {
+            this.text += "<" + s + ">";
+            return this;
+
+        }
+
+        public Markup setContent(string s)
+        {
+            this.text += "<" + s + ">";
+            return this;
+
+        }
+
+        public Markup setEnd(string s)
+        {
+            this.text += "<" + s + ">";
+            return this;
+        }
+
+        public string get()
+        {
+            return this.text;
+        }
+
+
+
+        public bool mach(string text)
+      {
+            Stack<char> stack = new Stack<char>();
+            string value = "987789";
+
+       
+            foreach (char c in value)
+            {
+                stack.Push(c);
+            }
+
+            bool result = true;
+            foreach (char c in value)
+            {
+                if (c != stack.Pop())
+                {
+                    result = false;
+                    break;
+                }
+            }
+            return result;
+        }
+
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Markup m = new Markup();
+           Console.WriteLine(m.setStart("processor").setContent("2.00 GHz Intel Core i7").setEnd("processor").get()) ;
+            Console.WriteLine(m.mach("981189"));
+
+
+         }
+    }
+}
